@@ -170,22 +170,17 @@ h3 {
 
 .menu-button {
   display: none;
-
   width: 36px;
   padding: 0;
-
   border: 0;
   background: none;
-
   cursor: pointer;
 }
 
 .menu-button span {
   display: block;
-
   height: 1px;
   margin: 7px 0;
-
   background: var(--ink);
 }
 
@@ -232,7 +227,10 @@ h3 {
   position: relative;
 
   min-height: calc(100vh - 72px);
-  padding: clamp(60px, 8vw, 120px) var(--page-padding) 40px;
+  padding:
+    clamp(60px, 8vw, 120px)
+    var(--page-padding)
+    clamp(55px, 7vw, 90px);
 
   background: var(--paper-light);
 }
@@ -283,10 +281,16 @@ h3 {
   text-transform: uppercase;
 }
 
+/*
+   UPDATED:
+   Previously used a variable fixed height plus a negative
+   top margin. A consistent 3:2 ratio feels much cleaner.
+*/
 .hero-image {
   width: min(920px, 67%);
-  height: clamp(260px, 42vw, 640px);
-  margin: -2vw 0 0 auto;
+  aspect-ratio: 3 / 2;
+  height: auto;
+  margin: clamp(35px, 4vw, 60px) 0 0 auto;
 }
 
 .hero-credit {
@@ -311,7 +315,9 @@ h3 {
   grid-template-columns: 1fr 3fr;
   gap: 60px;
 
-  padding: clamp(90px, 12vw, 180px) var(--page-padding);
+  padding:
+    clamp(90px, 12vw, 180px)
+    var(--page-padding);
 
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -358,7 +364,6 @@ h3 {
   height: 8px;
 
   background: currentColor;
-
   opacity: 0.12;
 }
 
@@ -439,11 +444,17 @@ h3 {
   gap: clamp(30px, 5vw, 85px);
   align-items: center;
 
-  margin-bottom: 100px;
+  margin-bottom: clamp(80px, 8vw, 120px);
 }
 
+/*
+   UPDATED:
+   Replaces min-height: 610px.
+*/
 .feature-image {
-  min-height: 610px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
 }
 
 .feature-content h3 {
@@ -469,12 +480,17 @@ h3 {
 
 .event-card {
   padding-top: 20px;
-
   border-top: 1px solid var(--ink);
 }
 
+/*
+   UPDATED:
+   Replaces fixed 280px desktop / 330px mobile heights.
+*/
 .event-image {
-  height: 280px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
   margin-bottom: 28px;
 }
 
@@ -499,9 +515,15 @@ h3 {
   color: var(--paper);
 }
 
+/*
+   UPDATED:
+   Large horizontal images now follow 16:9.
+*/
 .full-image {
-  height: min(62vw, 760px);
-  margin-bottom: 60px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  margin-bottom: clamp(45px, 5vw, 70px);
 }
 
 .wide-story {
@@ -584,11 +606,16 @@ h3 {
   display: block;
 }
 
+/*
+   UPDATED:
+   Keeps transition imagery wide rather than arbitrarily tall.
+*/
 .transition-image {
-  height: min(48vw, 610px);
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
 
   background: rgba(255, 255, 255, 0.1);
-
   border-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -667,7 +694,7 @@ h3 {
   gap: clamp(35px, 6vw, 90px);
   align-items: center;
 
-  margin-bottom: 120px;
+  margin-bottom: clamp(90px, 9vw, 130px);
 }
 
 .identity-hero.reverse {
@@ -683,8 +710,14 @@ h3 {
   grid-row: 1;
 }
 
+/*
+   UPDATED:
+   Replaces min-height: 600px.
+*/
 .identity-image {
-  min-height: 600px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
 }
 
 .identity-feature h3 {
@@ -780,11 +813,16 @@ h3 {
   color: var(--paper-light);
 }
 
+/*
+   UPDATED:
+   Portrait/profile imagery now uses a portrait proportion.
+*/
 .profile-photo {
-  min-height: 470px;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  min-height: 0;
 
   background: rgba(255, 255, 255, 0.1);
-
   border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -830,8 +868,14 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
+/*
+   UPDATED:
+   Fixed 430px height removed.
+*/
 .comparison-image {
-  height: 430px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
   margin-bottom: 30px;
 }
 
@@ -860,8 +904,14 @@ h3 {
   gap: 70px 32px;
 }
 
+/*
+   UPDATED:
+   Portraits get one consistent portrait ratio.
+*/
 .portrait-image {
-  height: min(38vw, 490px);
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  height: auto;
   margin-bottom: 20px;
 }
 
@@ -920,8 +970,14 @@ h3 {
   color: var(--accent);
 }
 
+/*
+   UPDATED:
+   Main contemporary image follows same wide-image system.
+*/
 .today-image {
-  height: min(55vw, 720px);
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
   margin-bottom: 70px;
 }
 
@@ -1247,6 +1303,123 @@ h3 {
 
 
 /* ==========================================================
+   APA CITATIONS
+========================================================== */
+
+.inline-source {
+  margin-top: 14px;
+
+  color: var(--muted);
+
+  font-size: 0.72rem;
+}
+
+.inline-source a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.apa-reference-list {
+  max-width: 1000px;
+}
+
+.apa-reference {
+  margin-bottom: 24px;
+  padding-left: 2rem;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  line-height: 1.7;
+  text-indent: -2rem;
+}
+
+.apa-reference a {
+  color: inherit;
+
+  overflow-wrap: anywhere;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* ==========================================================
+   REAL IMAGES
+========================================================== */
+
+/*
+   All actual images fill the proportion set by their parent
+   image container.
+
+   object-fit: cover prevents stretching while still creating
+   clean editorial crops.
+*/
+
+.sourced-image {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.sourced-image img,
+.hero-image img,
+.feature-image img,
+.event-image img,
+.full-image img,
+.transition-image img,
+.identity-image img,
+.profile-photo img,
+.comparison-image img,
+.portrait-image img,
+.today-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+/*
+   Slightly soften the crop movement if an image loads late.
+*/
+.sourced-image img {
+  transition: transform 0.35s ease;
+}
+
+
+/* ==========================================================
+   IMAGE CREDITS
+
+   Keeping this styling in case credits still appear in HTML.
+   If you removed the credit elements from the HTML, these
+   rules simply do nothing.
+========================================================== */
+
+.image-credit {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  max-width: calc(100% - 20px);
+  padding: 6px 9px;
+
+  background: rgba(0, 0, 0, 0.72);
+  color: white;
+
+  font-size: 0.6rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.image-credit:hover {
+  text-decoration: underline;
+}
+
+
+/* ==========================================================
    TABLET
 ========================================================== */
 
@@ -1282,7 +1455,7 @@ h3 {
 
   .hero-image {
     width: 82%;
-    margin-top: 30px;
+    margin-top: 40px;
   }
 
   .feature-story,
@@ -1290,6 +1463,20 @@ h3 {
   .identity-hero.reverse,
   .educator-section {
     grid-template-columns: 1fr;
+  }
+
+  .feature-story,
+  .identity-hero {
+    align-items: start;
+  }
+
+  /*
+     Keeps feature imagery from becoming excessively huge
+     when the layout changes from two columns to one.
+  */
+  .feature-image,
+  .identity-image {
+    width: min(100%, 760px);
   }
 
   .identity-hero.reverse .identity-image,
@@ -1328,7 +1515,6 @@ h3 {
   .profile-card {
     padding: 40px;
   }
-
 }
 
 
@@ -1342,17 +1528,39 @@ h3 {
     --page-padding: 20px;
   }
 
+  /*
+     Slightly tighter section spacing on smaller screens.
+     Still preserves the editorial whitespace.
+  */
+  .chapter,
+  .identity-section,
+  .portrait-section,
+  .today-section,
+  .resource-section,
+  .sources-section {
+    padding-top: 85px;
+    padding-bottom: 85px;
+  }
+
   .hero {
     min-height: auto;
+    padding-top: 55px;
+    padding-bottom: 70px;
   }
 
   .hero h1 {
     font-size: clamp(4rem, 20vw, 6.4rem);
   }
 
+  /*
+     UPDATED:
+     No fixed 320px mobile height.
+  */
   .hero-image {
     width: 100%;
-    height: 320px;
+    aspect-ratio: 3 / 2;
+    height: auto;
+    margin-top: 38px;
   }
 
   .hero-credit {
@@ -1370,6 +1578,10 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .intro-section {
+    gap: 30px;
+  }
+
   .chapter-heading {
     gap: 25px;
   }
@@ -1383,9 +1595,24 @@ h3 {
     font-size: clamp(3.2rem, 15vw, 5.2rem);
   }
 
+  /*
+     UPDATED:
+     Feature / identity images retain their natural 4:3
+     proportions instead of being forced to 390px tall.
+  */
   .feature-image,
   .identity-image {
-    min-height: 390px;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+  }
+
+  .feature-story {
+    margin-bottom: 75px;
+  }
+
+  .identity-hero {
+    margin-bottom: 80px;
   }
 
   .event-grid,
@@ -1396,8 +1623,12 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  /*
+     No separate 330px event-image height.
+  */
   .event-image {
-    height: 330px;
+    aspect-ratio: 4 / 3;
+    height: auto;
   }
 
   .mini-story {
@@ -1405,12 +1636,27 @@ h3 {
     gap: 10px;
   }
 
+  .transition-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
   .transition-section h2 {
+    margin-bottom: 50px;
+
     font-size: clamp(4rem, 18vw, 6.2rem);
   }
 
+  /*
+     No fixed 430px transition-image height.
+  */
   .transition-image {
-    height: 430px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  .timeline-row {
+    margin-bottom: 80px;
   }
 
   .timeline-item {
@@ -1422,23 +1668,49 @@ h3 {
     padding: 22px;
   }
 
+  /*
+     A portrait proportion works better than min-height:390px.
+  */
   .profile-photo {
-    min-height: 390px;
+    width: min(100%, 430px);
+    aspect-ratio: 3 / 4;
+    min-height: 0;
   }
 
+  /*
+     No fixed 350px comparison image height.
+  */
   .comparison-image {
-    height: 350px;
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+
+  .comparison-grid {
+    gap: 60px;
+    margin-bottom: 90px;
   }
 
   .portrait-grid {
     gap: 55px;
   }
 
+  /*
+     No fixed 440px portrait height.
+  */
   .portrait-image {
-    height: 440px;
+    aspect-ratio: 3 / 4;
+    height: auto;
+  }
+
+  .today-image {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    margin-bottom: 55px;
   }
 
   .stat-card {
+    min-height: auto;
+
     border-right: 0;
     border-bottom: 1px solid rgba(23, 23, 20, 0.3);
   }
@@ -1464,91 +1736,4 @@ h3 {
     flex-direction: column;
     gap: 18px;
   }
-
-  /* unncomment this when adding images
-  .identity-image img,
-.feature-image img,
-.hero-image img,
-.event-image img,
-.profile-photo img,
-.portrait-image img,
-.today-image img,
-.transition-image img,
-.comparison-image img,
-.full-image img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-} */
-
-/* ==========================================================
-   APA CITATIONS
-========================================================== */
-
-.inline-source {
-  margin-top: 14px;
-  font-size: 0.72rem;
-  color: var(--muted);
-
-}
-
-.inline-source a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.apa-reference-list {
-  max-width: 1000px;
-}
-
-.apa-reference {
-  margin-bottom: 24px;
-  padding-left: 2rem;
-  text-indent: -2rem; /* APA hanging indent */
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.apa-reference a {
-  color: inherit;
-  overflow-wrap: anywhere;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-/* IMAGE + IMAGE CITATION FORMATTING */
-
-.sourced-image {
-  position: relative;
-  overflow: hidden;
-}
-
-.sourced-image img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.image-credit {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  max-width: calc(100% - 20px);
-  padding: 6px 9px;
-
-  background: rgba(0, 0, 0, 0.72);
-  color: white;
-
-  font-size: 0.6rem;
-  line-height: 1.35;
-  text-decoration: none;
-}
-
-.image-credit:hover {
-  text-decoration: underline;
-}
-
 }
